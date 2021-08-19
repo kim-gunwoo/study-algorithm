@@ -22,21 +22,80 @@ output:
 */
 
 function solution(text) {
-  const j = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ",
-            "ㄹ","ㅁ","ㅂ","ㅃ","ㅅ",
-            "ㅆ","ㅇ","ㅈ","ㅉ","ㅊ",
-            "ㅋ","ㅌ","ㅍ","ㅎ",];
-  const m = ["ㅏ","ㅐ","ㅑ","ㅒ","ㅓ",
-            "ㅔ","ㅕ","ㅖ","ㅗ","ㅘ",
-            "ㅙ","ㅚ","ㅛ","ㅜ","ㅝ",
-            "ㅞ","ㅟ","ㅠ","ㅡ","ㅢ",
-            "ㅣ",];
-  const b = ["","ㄱ","ㄲ","ㄳ","ㄴ",
-            "ㄵ","ㄶ","ㄷ","ㄹ","ㄺ",
-            "ㄻ","ㄼ","ㄽ","ㄾ","ㄿ",
-            "ㅀ","ㅁ","ㅂ","ㅄ","ㅅ",
-            "ㅆ","ㅇ","ㅈ","ㅊ","ㅋ",
-            "ㅌ","ㅍ","ㅎ",];
+  const j = [
+    "ㄱ",
+    "ㄲ",
+    "ㄴ",
+    "ㄷ",
+    "ㄸ",
+    "ㄹ",
+    "ㅁ",
+    "ㅂ",
+    "ㅃ",
+    "ㅅ",
+    "ㅆ",
+    "ㅇ",
+    "ㅈ",
+    "ㅉ",
+    "ㅊ",
+    "ㅋ",
+    "ㅌ",
+    "ㅍ",
+    "ㅎ",
+  ];
+  const m = [
+    "ㅏ",
+    "ㅐ",
+    "ㅑ",
+    "ㅒ",
+    "ㅓ",
+    "ㅔ",
+    "ㅕ",
+    "ㅖ",
+    "ㅗ",
+    "ㅘ",
+    "ㅙ",
+    "ㅚ",
+    "ㅛ",
+    "ㅜ",
+    "ㅝ",
+    "ㅞ",
+    "ㅟ",
+    "ㅠ",
+    "ㅡ",
+    "ㅢ",
+    "ㅣ",
+  ];
+  const b = [
+    "",
+    "ㄱ",
+    "ㄲ",
+    "ㄳ",
+    "ㄴ",
+    "ㄵ",
+    "ㄶ",
+    "ㄷ",
+    "ㄹ",
+    "ㄺ",
+    "ㄻ",
+    "ㄼ",
+    "ㄽ",
+    "ㄾ",
+    "ㄿ",
+    "ㅀ",
+    "ㅁ",
+    "ㅂ",
+    "ㅄ",
+    "ㅅ",
+    "ㅆ",
+    "ㅇ",
+    "ㅈ",
+    "ㅊ",
+    "ㅋ",
+    "ㅌ",
+    "ㅍ",
+    "ㅎ",
+  ];
   const han_code = { start: 44032, end: 55176 };
 
   const textArr = text
@@ -68,3 +127,43 @@ function solution(text) {
 }
 
 solution("사과1호랑이,고니 수박BT닭");
+
+const text = "사과1호랑이,고니 수박BT닭";
+
+const countConsonants = (text) => {
+  const CONSONANTS = {
+    ㄱ: 0,
+    ㄲ: 0,
+    ㄴ: 0,
+    ㄷ: 0,
+    ㄸ: 0,
+    ㄹ: 0,
+    ㅁ: 0,
+    ㅂ: 0,
+    ㅃ: 0,
+    ㅅ: 0,
+    ㅆ: 0,
+    ㅇ: 0,
+    ㅈ: 0,
+    ㅉ: 0,
+    ㅊ: 0,
+    ㅋ: 0,
+    ㅌ: 0,
+    ㅍ: 0,
+    ㅎ: 0,
+  };
+  const GA_UNICODE = 44032;
+  const CONS_STEP = 588;
+
+  for (let i = 0; i < text.length; i++) {
+    const uni = text[i].charCodeAt(0) - GA_UNICODE;
+    const consonantsIndex = parseInt(uni / CONS_STEP);
+    const consonants = Object.keys(CONSONANTS)[consonantsIndex];
+
+    if (consonants) CONSONANTS[consonants]++;
+  }
+
+  return CONSONANTS;
+};
+
+countConsonants(text);
